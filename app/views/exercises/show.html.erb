@@ -1,0 +1,40 @@
+[
+<% @exercise[:collection].each do |item| %>
+  <span class="element"><%= "&#x#{item}".html_safe %></span>
+  <%= "," unless item == @exercise[:collection].last %>
+<% end %>
+]
+
+[<input id="args" type="num" class="element"></input>]
+
+<span class="eval">#=></span>
+
+<span id="result" class="result element">&#x1f34e;</span>
+
+<script>
+  (function () {
+    $("#args").keyup(function() {
+      $this = $(this);
+      console.log("Changed", $this.val());
+
+      $.ajax("/exercises/1/eval", {data:{args:$this.val()},
+        success: function(data) {
+          console.log("SUCCESS", data);
+          var result_html = "";
+          if(!data) {
+            result_html = "NULL";
+          }
+          else {
+            result_html = "&#x" + data + ";"
+          }
+          $('#result').html(result_html);
+        },
+        error: function() {
+          console.log("ERROR");
+        }
+
+
+      });
+    })
+  })();
+</script>
