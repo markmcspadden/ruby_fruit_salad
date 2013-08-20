@@ -1,0 +1,58 @@
+[<% exercise[:collection].each do |item| -%><span class="element emoji"><%= "&#x#{item}".html_safe -%></span><%= "<span class=\"comma\">,</span>".html_safe unless item == exercise[:collection].last -%><% end -%>][<input id="args" type="text" class="element" value="<%= exercise[:default].collect{ |e| "&#x#{e};" }.join(",").html_safe %>"></input>]
+
+<span class="eval">#=></span>
+[<span id="result" class="result element emoji"></span>]
+
+
+<script>
+  (function () {
+    $("#args").keyup(function() { updateResult(this) });
+    $("#args").change(function() { updateResult(this) });
+    //$("#args").input(function() { updateResult(this) });
+
+    $("#args").focus(function() { updateResult(this) });
+    $("#args").blur(function() { 
+      if($(this).val().match(/,$/)) {
+        $(this).val($(this).val().substring(0, $(this).val().length - 1));
+      }
+
+    });
+
+    function updateResult(element) {
+      $this = $(element);
+
+      // TODO: This doesn't work great if you try to delete
+      if(!$this.val().match(/,$/)) {
+        $this.val($this.val() + ","); 
+        //return; 
+      }
+      
+      console.log("Changed", $this.val());
+
+      $.ajax("/exercises/2/eval", {data:{args:$this.val()},
+        success: function(data) {
+          console.log("SUCCESS", data);
+          var result_html = "";
+          if(!data) {
+            result_html = "NULL";
+          }
+          else {
+            results = $.map(data, function(emoji) {
+              return ("&#x" + emoji + ";");  
+            })
+
+            result_html = results.join(",");
+            
+          }
+          $('#result').html(result_html);
+        },
+        error: function() {
+          console.log("ERROR");
+        }
+      });
+    }
+
+    $("#args").trigger("change");
+    //$("#args").trigger("blur");
+  })();
+</script>

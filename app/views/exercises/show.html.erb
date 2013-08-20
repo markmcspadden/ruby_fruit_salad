@@ -1,5 +1,5 @@
 <h2><%= @exercise[:name] %></h2>
 
-<section class="exercise">
+<section class="exercise <%= @exercise[:partial] %>">
   <%= render "/exercises/#{@exercise[:partial]}", :exercise => @exercise %>
 </section>

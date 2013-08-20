@@ -12,7 +12,18 @@ class ExercisesController < ApplicationController
   def eval
     @exercise = Exercise.find(params[:id])
 
-    result = @exercise[:collection].send(@exercise[:method], params[:args].send(@exercise[:args_conversion]))
+    args = params[:args]
+
+    # unless @exercise[:args_conversion].blank?
+    #   args = args.send(@exercise[:args_conversion])
+    # end
+
+    args = Exercise.args_conversion(args, @exercise[:id])
+
+    puts args
+    puts args.class
+
+    result = @exercise[:collection].send(@exercise[:method], args)
 
     render :json => result.to_json
   end
