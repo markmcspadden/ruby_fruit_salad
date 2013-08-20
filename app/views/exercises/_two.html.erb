@@ -1,4 +1,4 @@
-[<% exercise[:collection].each do |item| -%><span class="element emoji"><%= "&#x#{item}".html_safe -%></span><%= "<span class=\"comma\">,</span>".html_safe unless item == exercise[:collection].last -%><% end -%>][<input id="args" type="text" class="element" value="<%= exercise[:default].collect{ |e| "&#x#{e};" }.join(",").html_safe %>"></input>]
+[<% exercise[:collection].each do |item| -%><span class="element emoji"><%= "&#x#{item}".html_safe -%></span><%= "<span class=\"comma\">,</span>".html_safe unless item == exercise[:collection].last -%><% end -%>]+[<input id="args" type="text" class="element" value="<%= exercise[:default].collect{ |e| "&#x#{e};" }.join(",").html_safe %>"></input>]
 
 <span class="eval">#=></span>
 [<span id="result" class="result element emoji"></span>]
