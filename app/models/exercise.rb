@@ -24,6 +24,10 @@ class Exercise
     EXERCISES[id.to_s]
   end
 
+  def self.count
+    EXERCISES.size
+  end
+
   def self.args_conversion(args, id)
     case id
       when "2"

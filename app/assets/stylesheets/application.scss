@@ -18,10 +18,22 @@ body {
   font-size: 14px;
 }
 
+a, a:active, a:visited {
+  color: #A23030;
+}
+
 header {
   border-bottom: 1px solid #cecece;
   h1 {
     margin: 0;
+  }
+}
+
+nav {
+  float: right;
+
+  a {
+    text-decoration: none;
   }
 }
 
