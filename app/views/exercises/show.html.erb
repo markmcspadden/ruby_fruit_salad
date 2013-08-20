@@ -1,15 +1,16 @@
-[
-<% @exercise[:collection].each do |item| %>
-  <span class="element emoji"><%= "&#x#{item}".html_safe %></span>
-  <%= "," unless item == @exercise[:collection].last %>
-<% end %>
-]
+<section class="exercise">
 
-[<input id="args" type="number" class="element" value="<%= @exercise[:default]%>"></input>]
+  [<% @exercise[:collection].each do |item| -%>
+    <span class="element emoji"><%= "&#x#{item}".html_safe -%></span><%= "," unless item == @exercise[:collection].last -%>
+  <% end -%>]
 
-<span class="eval">#=></span>
+  [<input id="args" type="number" class="element" value="<%= @exercise[:default]%>"></input>]
 
-<span id="result" class="result element emoji"></span>
+  <span class="eval">#=></span>
+
+  <span id="result" class="result element emoji"></span>
+
+</section>
 
 <script>
   (function () {
