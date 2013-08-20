@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-EmojiCollections::Application.load_tasks
+RubyFruitSalad::Application.load_tasks

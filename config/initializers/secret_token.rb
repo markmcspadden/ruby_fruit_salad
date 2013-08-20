@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-EmojiCollections::Application.config.secret_key_base = '2d7c8eae9b2e17f333d8c12d571f9a9e7a5d7a26c51b607edb03f4ca3482dcd8d0e7535df220dffc4d4e7338d147d0bf4e83deb716b320340a9fa859c6c02f33'
+RubyFruitSalad::Application.config.secret_key_base = '2d7c8eae9b2e17f333d8c12d571f9a9e7a5d7a26c51b607edb03f4ca3482dcd8d0e7535df220dffc4d4e7338d147d0bf4e83deb716b320340a9fa859c6c02f33'
