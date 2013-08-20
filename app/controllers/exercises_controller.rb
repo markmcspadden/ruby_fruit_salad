@@ -1,27 +1,16 @@
 class ExercisesController < ApplicationController
 
-  EXERCISES = {"1" =>
-                    {collection:["1f34e","1f34a","1f34b","1f352"], 
-                      method:"[]".to_sym,
-                      args_conversion:"to_i",
-                      default:"0",
-                      id:"1",
-                      partial:"one",
-                      name: "Array#[]"
-                    }
-              }
-
   def show
     id = params[:id]
 
     # When the default route
     id = 1 if !params[:id]
 
-    @exercise = EXERCISES[id.to_s]
+    @exercise = Exercise.find(id)
   end
 
   def eval
-    @exercise = EXERCISES[params[:id].to_s]
+    @exercise = Exercise.find(params[:id])
 
     result = @exercise[:collection].send(@exercise[:method], params[:args].send(@exercise[:args_conversion]))
 
