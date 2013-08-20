@@ -1,20 +1,23 @@
 [
 <% @exercise[:collection].each do |item| %>
-  <span class="element"><%= "&#x#{item}".html_safe %></span>
+  <span class="element emoji"><%= "&#x#{item}".html_safe %></span>
   <%= "," unless item == @exercise[:collection].last %>
 <% end %>
 ]
 
-[<input id="args" type="num" class="element"></input>]
+[<input id="args" type="number" class="element" value="<%= @exercise[:default]%>"></input>]
 
 <span class="eval">#=></span>
 
-<span id="result" class="result element">&#x1f34e;</span>
+<span id="result" class="result element emoji"></span>
 
 <script>
   (function () {
-    $("#args").keyup(function() {
-      $this = $(this);
+    $("#args").keyup(function() { updateResult(this) });
+    $("#args").change(function() { updateResult(this) });
+
+    function updateResult(element) {
+      $this = $(element);
       console.log("Changed", $this.val());
 
       $.ajax("/exercises/1/eval", {data:{args:$this.val()},
@@ -32,9 +35,9 @@
         error: function() {
           console.log("ERROR");
         }
-
-
       });
-    })
+    }
+
+    $("#args").trigger("change");
   })();
 </script>
