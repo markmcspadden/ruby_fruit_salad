@@ -12,6 +12,7 @@ group :production do
   # Use postgres as the database for Active Record on heroku
   gem 'pg'
   gem 'rails_12factor'
+  gem 'unicorn'
 end
 
 # Use SCSS for stylesheets
