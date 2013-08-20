@@ -8,6 +8,8 @@ RubyFruitSalad::Application.routes.draw do
     end
   end
 
+  root 'exercises#show'
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

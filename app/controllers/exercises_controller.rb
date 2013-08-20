@@ -8,9 +8,12 @@ class ExercisesController < ApplicationController
               }
 
   def show
-    puts "Do Exercise #{params[:id]}"
+    id = params[:id]
 
-    @exercise = EXERCISES[params[:id].to_s]
+    # When the default route
+    id = 1 if !params[:id]
+
+    @exercise = EXERCISES[id.to_s]
   end
 
   def eval
