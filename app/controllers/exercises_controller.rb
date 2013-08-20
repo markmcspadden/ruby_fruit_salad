@@ -12,16 +12,7 @@ class ExercisesController < ApplicationController
   def eval
     @exercise = Exercise.find(params[:id])
 
-    args = params[:args]
-
-    # unless @exercise[:args_conversion].blank?
-    #   args = args.send(@exercise[:args_conversion])
-    # end
-
-    args = Exercise.args_conversion(args, @exercise[:id])
-
-    puts args
-    puts args.class
+    args = Exercise.args_conversion(params[:args], @exercise[:id])
 
     result = @exercise[:collection].send(@exercise[:method], args)
 
