@@ -19,23 +19,24 @@ body {
 }
 
 header {
+  border-bottom: 1px solid #cecece;
   h1 {
-
+    margin: 0;
   }
 }
 
 .exercise {
   font-family: Courier;
-  font-size: 100px;
+  font-size: 80px;
 }
 
 .emoji {
   font-family: 'AppleColorEmoji' !important;
-  font-size: 70px;
+  font-size: 50px;
 }
 
 .element {
-  font-size: 70px;
+  font-size: 50px;
 }
 
 input.element {
@@ -48,8 +49,12 @@ input.element {
   margin: 0;
 }
 
+.comma {
+  font-size: 50px;
+}
+
 .eval {
-  font-size: 0.7em;
+  font-size: 50px;
   color: #5f5f5f;
 }
 
